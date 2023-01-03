@@ -1,0 +1,45 @@
+/* 
+This: Explicit Binding
+We would use .call or .apply to explicitly specify the `this` context
+The first argument of both .call and .apply is a specific `this` object
+*/
+
+function ask(question) {
+    console.log(this.instructor + ', ' + question)
+}
+
+let workshop1 = {
+    instructor: 'Michelle',
+}
+
+let workshop2 = {
+    instructor: 'David',
+}
+
+ask.call(workshop1, 'What is JavaScript?')
+
+ask.call(workshop2, 'How do you get your hair like that?')
+
+
+// What about .bind? (A version of explicit binding)
+
+let workshop3 = {
+    instructor: 'Kara',
+    ask(question) {
+        console.log(this.instructor + ', ' + question)
+    }
+}
+
+/* Problem here is that you might think that this is implicit binding 
+but workshop.ask (line 40) is not the call site! 
+Why? Because setTimeout is being called in the global/window context 
+thus making the global/window object the call site and not workshop.ask
+*/
+setTimeout(workshop3.ask, 1000, 'Did you lose this?')
+
+
+/* Solution. Please, remember this for React later. 😁 
+The bind doesn't actually invoke the function! 
+It produces a new function which is bound to a particular this context.
+*/
+setTimeout(workshop3.ask.bind(workshop3), 1000, '.bind will save you!')
