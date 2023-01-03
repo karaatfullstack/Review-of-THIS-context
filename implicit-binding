@@ -1,0 +1,31 @@
+/*  This: Implicit Binding - What is the callsite?
+workshop(dot)ask is saying "invoke ask with the this keyword pointing at workshop" */
+
+let workshop = {
+  instructor: 'Michelle',
+  ask(question) {
+    console.log(this.instructor + ', ' + question)
+  }
+}
+
+workshop.ask('How are you doing?')
+
+// Let's extend the implicit binding to a more generalized example
+
+function ask(question) {
+  console.log(this.instructor + ', ' + question)
+}
+
+let workshop1 = {
+  instructor: 'Michelle',
+  ask: ask
+}
+
+let workshop2 = {
+  instructor: 'David',
+  ask: ask
+}
+
+workshop1.ask('Are you okay after your climbing tumble?')
+
+workshop2.ask('How do you get your hair like that?')
