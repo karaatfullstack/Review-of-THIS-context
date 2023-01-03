@@ -38,4 +38,4 @@ let newEmptyObject = new ask('Is this new?')
 
 ## Arrow Functions (Come back to this)
 
-It's best to get the rules down pat and then go into the `this-arrow-functions.js` to go into arrow functions to review.
+It's best to get the rules down pat and then go into the `arrow-functions.js` to go into arrow functions to review.
