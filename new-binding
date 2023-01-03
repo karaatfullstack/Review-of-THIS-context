@@ -1,0 +1,15 @@
+/* This: new keyword - another way to invoke a function with a 
+'this' keyword pointing at a new empty object */
+
+function ask(question) {
+    console.log(this.instructor + ', ' + question)
+  }
+  
+let newEmptyObject = new ask('Is this new?')
+
+/* How 'new' works
+1. Creates brand new empty object out of thin air
+2. The newly created object (1) gets linked to another object
+3. The newly created object (1) gets passed in as 'this' context to function call
+4. If that function does not already return its own object, the new keyword assumes you meant to return the new object that was passed in -> implies 'return this'
+*/
