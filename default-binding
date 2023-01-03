@@ -1,0 +1,17 @@
+var instructor = 'Kara' // What happens when we change to let?
+
+
+function ask(question) {
+    console.log(this.instructor + ', ' + question)
+}
+
+ask('What is the default binding?')
+
+/* 
+See MDN docs for more detail on let vs var: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let
+The main thing we should focus on is that if we change the declaration from var to let
+`this.instructor` will end up printing undefined when the console.log prints
+let (or const) does NOT create properties on the `window` or global object but var does so when
+instructor is declared with var, it's on the window or global object. 
+The default binding points to the global object.
+*/
